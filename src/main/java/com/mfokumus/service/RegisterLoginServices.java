@@ -238,7 +238,7 @@ public class RegisterLoginServices {
                     }
                     break;
                 case 13:
-                    vki_hesaplama();
+                    //vki_hesaplama();
                     break;
                 case 14:
                     logout();
