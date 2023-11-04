@@ -35,6 +35,12 @@ public class VkiDto extends BaseDto implements Serializable {
                 "} " + super.toString();
     }
 
+    @Override
+    public String nowDateAbstract() {
+        return null;
+    }
+
+    // GETTER AND SETTER
     public Float getBoy() {
         return boy;
     }
@@ -67,8 +73,4 @@ public class VkiDto extends BaseDto implements Serializable {
         this.user_id = user_id;
     }
 
-    @Override
-    public String nowDateAbstract() {
-        return null;
-    }
 }
