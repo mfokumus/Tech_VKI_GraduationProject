@@ -55,7 +55,7 @@ public class DatabaseConnection extends DatabaseInformation{
     //////////////////////////////////////////////////////////////////
     // PSVM
     public static void main(String[] args) {
-        DatabaseConnection databaseConnection = new DatabaseConnection();
+        //DatabaseConnection databaseConnection = new DatabaseConnection();
     }
 
 }// end Class DatabaseConnection
