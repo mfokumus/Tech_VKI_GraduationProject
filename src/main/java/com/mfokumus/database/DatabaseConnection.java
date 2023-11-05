@@ -51,11 +51,4 @@ public class DatabaseConnection extends DatabaseInformation{
     public void setConnection(Connection connection) {
         this.connection = connection;
     }
-
-    //////////////////////////////////////////////////////////////////
-    // PSVM
-    public static void main(String[] args) {
-        //DatabaseConnection databaseConnection = new DatabaseConnection();
-    }
-
 }// end Class DatabaseConnection

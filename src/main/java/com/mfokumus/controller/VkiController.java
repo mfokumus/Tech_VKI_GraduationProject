@@ -1,18 +1,15 @@
 package com.mfokumus.controller;
 
 import com.mfokumus.dao.IDaoGenerics;
-import com.mfokumus.dao.RegisterDao;
 import com.mfokumus.dao.VkiDao;
 import com.mfokumus.dto.RegisterDto;
 import com.mfokumus.dto.VkiDto;
-import com.mfokumus.files.FilePathData;
 
 import java.util.ArrayList;
 
 public class VkiController implements IDaoGenerics<VkiDto> {
 
     // Injection
-    private FilePathData filePathData = new FilePathData(); // for log
     private VkiDao vkiDao = new VkiDao();
 
 ////////////////////////////////////////////////////////////////////////
@@ -20,19 +17,24 @@ public class VkiController implements IDaoGenerics<VkiDto> {
     // SPEED DATA
     @Override
     public String speedData(Long id) {
-        return vkiDao.speedData(id);
+        return null;
     }
 
     // ALL DELETE
     @Override
     public String allDelete() {
-        return vkiDao.allDelete();
+        return null;
     }
 
     // CREATE
     @Override
     public VkiDto create(VkiDto vkiDto) {
         return vkiDao.create(vkiDto);
+    }
+
+    // FIND BY USER ID
+    public VkiDto findByUserId(Long user_id){
+        return vkiDao.findByUserId(user_id);
     }
 
     // FIND BY ID
@@ -66,6 +68,6 @@ public class VkiController implements IDaoGenerics<VkiDto> {
     // DELETE BY ID
     @Override
     public VkiDto deleteById(VkiDto vkiDto) {
-        return vkiDao.deleteById(vkiDto);
+        return null;
     }
 }

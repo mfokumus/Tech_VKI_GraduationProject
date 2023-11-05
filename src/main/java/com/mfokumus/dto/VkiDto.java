@@ -5,33 +5,35 @@ import java.util.Date;
 
 public class VkiDto extends BaseDto implements Serializable {
 
-    public static final Long serialVersionUID=1L;
+    // SERILESTIRME
+    public static final Long serialVersionUID = 1L;
 
-    private Float boy;
-    private Float kilo;
-    private Float vucut_kitle_index;
-    private Long user_id;
+    private Double boy;
+    private Double kilo;
+    private Double vucutKitleIndex;
+    private Long userId;
+
 
     // Constructor (parametresiz)
     public VkiDto() {
     }
 
     // Constructor (parametreli)
-    public VkiDto(Float boy, Float kilo, Float vucut_kitle_index, Long user_id) {
+    public VkiDto(Long id, Date systemCreatedDate, Double boy, Double kilo, Double vucutKitleIndex, Long userId) {
+        super(id, systemCreatedDate);
         this.boy = boy;
         this.kilo = kilo;
-        this.vucut_kitle_index = vucut_kitle_index;
-        this.user_id = user_id;
+        this.vucutKitleIndex = vucutKitleIndex;
+        this.userId = userId;
     }
 
-    // toString
     @Override
     public String toString() {
         return "VkiDto{" +
                 "boy=" + boy +
                 ", kilo=" + kilo +
-                ", vucut_kitle_index=" + vucut_kitle_index +
-                ", user_id=" + user_id +
+                ", vucut_kitle_index=" + vucutKitleIndex +
+                ", user_id=" + userId +
                 "} " + super.toString();
     }
 
@@ -40,37 +42,35 @@ public class VkiDto extends BaseDto implements Serializable {
         return null;
     }
 
-    // GETTER AND SETTER
-    public Float getBoy() {
+    public Double getBoy() {
         return boy;
     }
 
-    public void setBoy(Float boy) {
+    public void setBoy(Double boy) {
         this.boy = boy;
     }
 
-    public Float getKilo() {
+    public Double getKilo() {
         return kilo;
     }
 
-    public void setKilo(Float kilo) {
-        this.kilo = kilo;
+    public void setKilo(Double kilo) {
+        this.kilo = (double) Math.round(kilo);
     }
 
-    public Float getVucut_kitle_index() {
-        return vucut_kitle_index;
+    public Double getVucutKitleIndex() {
+        return vucutKitleIndex;
     }
 
-    public void setVucut_kitle_index(Float vucut_kitle_index) {
-        this.vucut_kitle_index = vucut_kitle_index;
+    public void setVucutKitleIndex(Double vucutKitleIndex) {
+        this.vucutKitleIndex = vucutKitleIndex;
     }
 
-    public Long getUser_id() {
-        return user_id;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUser_id(Long user_id) {
-        this.user_id = user_id;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
-
 }

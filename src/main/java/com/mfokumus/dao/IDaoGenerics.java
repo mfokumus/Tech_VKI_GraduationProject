@@ -23,7 +23,7 @@ public interface IDaoGenerics <T> {
 
     // FIND BY ID
     public T findById(Long id); // kullanıcıdan alınan id burda kullanıcam
-    public T findByEmail(String email); // amaç kullanıcı daha önce kayıt oldu mu olmadı mı onu öğrenmek!!!
+    public T findByEmail(String email);
 
     //LIST
     public ArrayList<T> list(); // kullanıcıdan herhangi bir parametre almamıza gerek yok

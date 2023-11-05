@@ -1,8 +1,10 @@
 package com.mfokumus.service;
 
 import com.mfokumus.controller.RegisterController;
+import com.mfokumus.controller.VkiController;
 import com.mfokumus.dao.RegisterDao;
 import com.mfokumus.dto.RegisterDto;
+import com.mfokumus.dto.VkiDto;
 import com.mfokumus.files.FilePathData;
 import com.mfokumus.roles.ERoles;
 
@@ -12,6 +14,7 @@ public class RegisterLoginServices {
 
     // Injection
     private RegisterController registerController = new RegisterController();
+    private VkiController vkiController = new VkiController();
     private FilePathData filePathData = new FilePathData();
 
     // Eğer sistemde ilgili email ile kullanıcı varsa sisteme giriş yapsın
@@ -238,7 +241,9 @@ public class RegisterLoginServices {
                     }
                     break;
                 case 13:
-                    //vki_hesaplama();
+                    VkiDto vkiDto = vki_hesaplama(registerDto);
+                    get_vki(vkiDto);
+                    autoRegister(vkiDto);
                     break;
                 case 14:
                     logout();
@@ -252,6 +257,40 @@ public class RegisterLoginServices {
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // METHOD
+    // VKİ HESAPLAMA
+    public VkiDto vki_hesaplama(RegisterDto registerDto){
+        Scanner klavye = new Scanner(System.in);
+        VkiDto vkiDto = new VkiDto();
+        vkiDto.setUserId(registerDto.getId());
+        System.out.println("\n ---- Vucut Kitle Indexi Hesaplama Bolumune Hosgeldiniz Saglikli Gunler Dileriz ----");
+
+        // Kilo girişi
+        System.out.println("Lütfen kilonuzu kilgoram giriniz (Ör:85.6)");
+        vkiDto.setKilo(klavye.nextDouble());
+        // Boy girişi
+        System.out.println("Lütfen boyunuzu metre cinsinden giriniz (Ör:1.75)");
+        vkiDto.setBoy(klavye.nextDouble());
+
+        Double sonuc = (vkiDto.getKilo() / (vkiDto.getBoy() * vkiDto.getBoy()));
+        vkiDto.setVucutKitleIndex(sonuc);
+        return vkiDto;
+    }// end vki hesaplama
+
+    private void autoRegister(VkiDto vkiDto) {
+        vkiController.create(vkiDto);
+    }
+
+    // GET VKI CREATE OR UPDATE ISLEMI
+    private void get_vki(VkiDto vkiDto) {
+        VkiDto vkiDto_db = vkiController.findByUserId(vkiDto.getUserId());
+        if (vkiDto_db==null){
+            vkiController.create(vkiDto);
+        }else{
+            vkiController.update(vkiDto_db.getId(),vkiDto);
+        }
+    }
+
+
     // just member login
     private void specialHomePage() {
         System.out.println("Sadece Üyeler Bu sayfayı görebilir.");
