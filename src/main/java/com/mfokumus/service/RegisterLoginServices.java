@@ -8,6 +8,7 @@ import com.mfokumus.dto.VkiDto;
 import com.mfokumus.files.FilePathData;
 import com.mfokumus.roles.ERoles;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class RegisterLoginServices {
@@ -242,8 +243,10 @@ public class RegisterLoginServices {
                     break;
                 case 13:
                     VkiDto vkiDto = vki_hesaplama(registerDto);
-                    get_vki(vkiDto);
-                    autoRegister(vkiDto);
+                    vki_database(vkiDto);
+                    vkiLimitCheck(vkiDto);
+                    backToHomePage();
+                    //Thread.sleep(3000);
                     break;
                 case 14:
                     logout();
@@ -260,36 +263,75 @@ public class RegisterLoginServices {
     // VKİ HESAPLAMA
     public VkiDto vki_hesaplama(RegisterDto registerDto){
         Scanner klavye = new Scanner(System.in);
+        final DecimalFormat df = new DecimalFormat("0.00");
         VkiDto vkiDto = new VkiDto();
         vkiDto.setUserId(registerDto.getId());
         System.out.println("\n ---- Vucut Kitle Indexi Hesaplama Bolumune Hosgeldiniz Saglikli Gunler Dileriz ----");
-
         // Kilo girişi
-        System.out.println("Lütfen kilonuzu kilgoram giriniz (Ör:85.6)");
+        System.out.println("Lütfen kilonuzu kilgoram cinsinden giriniz (Ör:85,6)");
         vkiDto.setKilo(klavye.nextDouble());
         // Boy girişi
-        System.out.println("Lütfen boyunuzu metre cinsinden giriniz (Ör:1.75)");
+        System.out.println("Lütfen boyunuzu metre cinsinden giriniz (Ör:1,75)");
         vkiDto.setBoy(klavye.nextDouble());
-
+        // Sonuc Hesapla
         Double sonuc = (vkiDto.getKilo() / (vkiDto.getBoy() * vkiDto.getBoy()));
+
         vkiDto.setVucutKitleIndex(sonuc);
         return vkiDto;
     }// end vki hesaplama
 
-    private void autoRegister(VkiDto vkiDto) {
-        vkiController.create(vkiDto);
-    }
-
-    // GET VKI CREATE OR UPDATE ISLEMI
-    private void get_vki(VkiDto vkiDto) {
+    // VERILERI DATABASE'DE OLUSTURSUN
+    // GET VKI ILE DATABASE KONTROLU YAPSIN YOKSA OLUSTURSUN VARSA UPDATE ETSIN
+    private void vki_database(VkiDto vkiDto) {
         VkiDto vkiDto_db = vkiController.findByUserId(vkiDto.getUserId());
-        if (vkiDto_db==null){
+        if (vkiDto_db.getId()==null){
             vkiController.create(vkiDto);
         }else{
             vkiController.update(vkiDto_db.getId(),vkiDto);
         }
     }
 
+    // ALT LIMIT UST LIMIT OLCME
+    private void vkiLimitCheck (VkiDto vkiDto){
+        final DecimalFormat df = new DecimalFormat("0.00");
+        System.out.println("--------------------------------------------------------------------");
+        System.out.println("Boyunuz: "+ vkiDto.getBoy() + "\nKilonuz: " + vkiDto.getKilo());
+        if (0<=vkiDto.getVucutKitleIndex() && vkiDto.getVucutKitleIndex()<18.5){
+            System.out.println("\nVucut Kitle Indexsiniz: "+df.format(vkiDto.getVucutKitleIndex()) +
+                    " => Ideal Kilonun Altindasiniz");
+        } else if (18.5<=vkiDto.getVucutKitleIndex() && vkiDto.getVucutKitleIndex()<25) {
+            System.out.println("Vucut Kitle Indexsiniz: "+df.format(vkiDto.getVucutKitleIndex())+
+                    " => Ideal Kilodasiniz");
+        }else if (25<=vkiDto.getVucutKitleIndex() && vkiDto.getVucutKitleIndex()<30) {
+            System.out.println("Vucut Kitle Indexsiniz: "+df.format(vkiDto.getVucutKitleIndex())+
+                    " => Ideal Kilonun Ustundesiniz (Fazla Kilolu)");
+        }else if (30<=vkiDto.getVucutKitleIndex() && vkiDto.getVucutKitleIndex()<35) {
+            System.out.println("Vucut Kitle Indexsiniz: "+df.format(vkiDto.getVucutKitleIndex())+
+                    " => 1. Derece Obezite.");
+        }else if (35<=vkiDto.getVucutKitleIndex() && vkiDto.getVucutKitleIndex()<40) {
+            System.out.println("Vucut Kitle Indexsiniz: " + df.format(vkiDto.getVucutKitleIndex()) +
+                    " => 2. Derece Obezite");
+        }else{
+            System.out.println("Vucut Kitle Indexsiniz: " + df.format(vkiDto.getVucutKitleIndex()) +
+                    " => 3. Derece Obezite.");
+        }
+        System.out.println("--------------------------------------------------------------------");
+    }
+
+    // ANASAYFAYA DON
+    private void backToHomePage(){
+        System.out.println("Anasayfaya Donmek Icin ENTER Tusuna Basin");
+        Scanner klavye = new Scanner(System.in);
+        while (true){
+            String result = klavye.nextLine();
+            if (!result.equals("")) {
+                System.out.println("Anasayfaya donmek icin lutfen enter tusuna basin");
+            } else {
+                System.out.println("Ansayfaya Yonlendiriliyorsunuz...");
+                break;
+            }
+        }
+    }
 
     // just member login
     private void specialHomePage() {

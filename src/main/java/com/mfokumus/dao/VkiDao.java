@@ -111,6 +111,7 @@ public class VkiDao implements IDaoGenerics<VkiDto> , Serializable {
             preparedStatement.setDouble(2,vkiDto.getKilo());
             preparedStatement.setDouble(3,vkiDto.getVucutKitleIndex());
             preparedStatement.setLong(4, vkiDto.getUserId());
+            preparedStatement.setLong(5,id);
             // executeUpdate: create, delete, update için kullanılır.
             int rowsEffected = preparedStatement.executeUpdate();
             // eğer ekleme yapılmamışsa -1 değerini döner
