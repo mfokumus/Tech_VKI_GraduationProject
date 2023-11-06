@@ -156,7 +156,7 @@ public class RegisterLoginServices {
                     }
                     break;
                 case 4:
-                    if (registerDto.getRolles().equals(ERoles.ADMIN.getValue()) || registerDto.getRolles().equals(ERoles.WRITER.getValue())) {
+                    if (registerDto.getRolles().equals(ERoles.ADMIN.getValue())) {
                         memberList();
                         System.out.println("ID'e göre Bulma");
                         RegisterDto registerDtoFindId = memberFindById();
@@ -173,7 +173,7 @@ public class RegisterLoginServices {
                     }
                     break;
                 case 5:
-                    if (registerDto.getRolles().equals(ERoles.ADMIN.getValue()) || registerDto.getRolles().equals(ERoles.WRITER.getValue())) {
+                    if (registerDto.getRolles().equals(ERoles.ADMIN.getValue())) {
                         memberList();
                         System.out.println("Email'e göre bulma");
                         RegisterDto registerDtoFindEmail = memberfindEmail();
@@ -213,7 +213,7 @@ public class RegisterLoginServices {
                     break;
                 case 10:
                     System.out.println("Dosya Ekleme");
-                    if (registerDto.getRolles().equals(ERoles.ADMIN.getValue()) || registerDto.getRolles().equals(ERoles.WRITER.getValue())) {
+                    if (registerDto.getRolles().equals(ERoles.ADMIN.getValue())) {
                         specialFileCreateData();
                     } else {
                         System.out.println("Rolünüz: " + registerDto.getRolles() + " Yetkiniz yoktur");
@@ -222,7 +222,7 @@ public class RegisterLoginServices {
                     break;
                 case 11:
                     System.out.println("Dosya Listeleme");
-                    if (registerDto.getRolles().equals(ERoles.ADMIN.getValue()) || registerDto.getRolles().equals(ERoles.WRITER.getValue())) {
+                    if (registerDto.getRolles().equals(ERoles.ADMIN.getValue())) {
                         fileListData();
                     } else {
                         System.out.println("Rolünüz: " + registerDto.getRolles() + " Yetkiniz yoktur");
@@ -240,7 +240,7 @@ public class RegisterLoginServices {
                     break;
                 case 13:
                     System.out.println("Dosya Bilgileri");
-                    if (registerDto.getRolles().equals(ERoles.ADMIN.getValue()) || registerDto.getRolles().equals(ERoles.WRITER.getValue())) {
+                    if (registerDto.getRolles().equals(ERoles.ADMIN.getValue())) {
                         fileInformation();
                     } else {
                         System.out.println("Rolünüz: " + registerDto.getRolles() + " Yetkiniz yoktur");

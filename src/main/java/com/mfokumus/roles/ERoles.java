@@ -1,7 +1,7 @@
 package com.mfokumus.roles;
 
 public enum ERoles {
-    ADMIN(1L,"admin"), WRITER(2L,"writer"), USER(3L,"user");  // (key, "value")
+    ADMIN(1L,"admin"), USER(2L,"user");  // (key, "value")
 
     //variable
     private final Long key;
