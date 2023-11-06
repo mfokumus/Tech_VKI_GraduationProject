@@ -59,7 +59,7 @@ Dosya Listele(-)
 Dosya Sil(-)
 Dosya Bilgileri(-)
 Çıkış yap(+)
-```
+
 **EN**
 **Welcome to my TechCareer FullStack Bootcamp Graduation Project.**
 <br/>
