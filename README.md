@@ -5,7 +5,7 @@
 (GitHub Link)["https://github.com/mfokumus"]
 
 
-## Java Core 
+## TechCareer FullStack Bootcamp Bitirme Projeme Hoşgeldiniz
 **Java with sql**
 >
 > 
@@ -14,8 +14,6 @@
 ---
 
 ```sh
-***** TechCareer FullStack Bootcamp Bitirme Projeme Hoşgeldiniz *****
-
 Projenin temel amacı: Vücut Kitle İndexi(VKI) hesaplayan, kullanıcı bilgilerini database e kaydeden bir ugulama yazmak.
 
 ** !! !! Uygulama Nasıl Kullanılır:**
