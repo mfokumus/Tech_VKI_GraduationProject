@@ -15,7 +15,7 @@ abstract public class BaseDto implements Serializable {
 
     //constructor (Parametresiz)
     public BaseDto() {
-        System.out.println("HashCode " + BaseDto.class.hashCode());
+        //System.out.println("HashCode " + BaseDto.class.hashCode());
         this.systemCreatedDate = new Date(System.currentTimeMillis()); //1 ocak 1970 yılından bu yana geçen milisaniye
     }
 

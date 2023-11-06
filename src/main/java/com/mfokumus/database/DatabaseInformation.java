@@ -15,7 +15,7 @@ abstract public class DatabaseInformation {
         user = "root";
         password = "root";
         url = "jdbc:mysql://localhost:3306/cars";
-        forNameData = "com.mysql.cj.jdbc.Driver";
+        forNameData = "com.mysql.cj.jdbc.Driver"; //my sql driver kısmı
     }
 
     // Constructor (Parametreli)

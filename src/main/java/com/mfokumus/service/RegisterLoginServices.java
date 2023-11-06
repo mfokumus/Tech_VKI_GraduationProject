@@ -123,12 +123,12 @@ public class RegisterLoginServices {
     private void adminProcess(RegisterDto registerDto) {
         Scanner klavye = new Scanner(System.in);
         while (true) {
-            System.out.println("\nADMIN SAYFASINA HOSGELDINIZ");
+            System.out.println("\nMFO SISTEMINE HOSGELDINIZ");
             System.out.println("Lütfen Seçiminizi Yapınız");
-            System.out.println("0-) Ana sayfa\n1-) Üye Listele\n2-) Üye Ekle\n3-) Üye Bul(ID)\n4-) Üye Bul (Email)");
-            System.out.println("5-) Üye Güncelle\n6-) Üye Sil\n7-) Giriş Logları\n8-) Rolünüz");
-            System.out.println("9-) Dosya Ekle\n10-) Dosya Listele\n11-) Dosya Sil");
-            System.out.println("12-) Dosya Bilgileri \n13-) VKI (Vücut Kitle İndexi) Hesaplama \n14-) Çıkış Yap");
+            System.out.println("0-) Ana sayfa\n1-) VKI (Vücut Kitle İndexi) Hesaplama\n2-) Üye Listele\n3-) Üye Ekle\n4-) Üye Bul(ID)\n5-) Üye Bul (Email)");
+            System.out.println("6-) Üye Güncelle\n7-) Üye Sil\n8-) Giriş Logları\n9-) Rolünüz");
+            System.out.println("10-) Dosya Ekle\n11-) Dosya Listele\n12-) Dosya Sil");
+            System.out.println("13-) Dosya Bilgileri  \n14-) Çıkış Yap");
             int chooise = klavye.nextInt();
             switch (chooise) {
                 case 0:
@@ -136,10 +136,16 @@ public class RegisterLoginServices {
                     specialHomePage();
                     break;
                 case 1:
+                    VkiDto vkiDto = vki_hesaplama(registerDto);
+                    vki_database(vkiDto);
+                    vkiLimitCheck(vkiDto);
+                    backToHomePage();
+                    break;
+                case 2:
                     System.out.println("Listeleme");
                     memberList();
                     break;
-                case 2:
+                case 3:
                     if (registerDto.getRolles().equals(ERoles.ADMIN.getValue())) {
                         System.out.println("Oluşturma");
                         RegisterDto registerDtoCreate = memberCreate();
@@ -149,7 +155,7 @@ public class RegisterLoginServices {
                         //throw new HamitMizrak0Exception("Yetkiniz Yoktur");
                     }
                     break;
-                case 3:
+                case 4:
                     if (registerDto.getRolles().equals(ERoles.ADMIN.getValue()) || registerDto.getRolles().equals(ERoles.WRITER.getValue())) {
                         memberList();
                         System.out.println("ID'e göre Bulma");
@@ -166,7 +172,7 @@ public class RegisterLoginServices {
                         //throw new HamitMizrak0Exception("Yetkiniz Yoktur");
                     }
                     break;
-                case 4:
+                case 5:
                     if (registerDto.getRolles().equals(ERoles.ADMIN.getValue()) || registerDto.getRolles().equals(ERoles.WRITER.getValue())) {
                         memberList();
                         System.out.println("Email'e göre bulma");
@@ -177,7 +183,7 @@ public class RegisterLoginServices {
                         //throw new HamitMizrak0Exception("Yetkiniz Yoktur");
                     }
                     break;
-                case 5:
+                case 6:
                     if (registerDto.getRolles().equals(ERoles.ADMIN.getValue())) {
                         memberList();
                         System.out.println("Güncelleme");
@@ -188,7 +194,7 @@ public class RegisterLoginServices {
                         //throw new HamitMizrak0Exception("Yetkiniz Yoktur");
                     }
                     break;
-                case 6:
+                case 7:
                     if (registerDto.getRolles().equals(ERoles.ADMIN.getValue())) {
                         memberList();
                         System.out.println("Silme");
@@ -199,13 +205,13 @@ public class RegisterLoginServices {
                         //throw new HamitMizrak0Exception("Yetkiniz Yoktur");
                     }
                     break;
-                case 7:
+                case 8:
                     logFile();
                     break;
-                case 8:
+                case 9:
                     System.out.println("Rolünüz: " + userRoles(registerDto.getRolles()));
                     break;
-                case 9:
+                case 10:
                     System.out.println("Dosya Ekleme");
                     if (registerDto.getRolles().equals(ERoles.ADMIN.getValue()) || registerDto.getRolles().equals(ERoles.WRITER.getValue())) {
                         specialFileCreateData();
@@ -214,7 +220,7 @@ public class RegisterLoginServices {
                         //throw new HamitMizrak0Exception("Yetkiniz Yoktur");
                     }
                     break;
-                case 10:
+                case 11:
                     System.out.println("Dosya Listeleme");
                     if (registerDto.getRolles().equals(ERoles.ADMIN.getValue()) || registerDto.getRolles().equals(ERoles.WRITER.getValue())) {
                         fileListData();
@@ -223,7 +229,7 @@ public class RegisterLoginServices {
                         //throw new HamitMizrak0Exception("Yetkiniz Yoktur");
                     }
                     break;
-                case 11:
+                case 12:
                     System.out.println("Dosya Silme");
                     if (registerDto.getRolles().equals(ERoles.ADMIN.getValue()) ) {
                         fileDeleteData();
@@ -232,7 +238,7 @@ public class RegisterLoginServices {
                         //throw new HamitMizrak0Exception("Yetkiniz Yoktur");
                     }
                     break;
-                case 12:
+                case 13:
                     System.out.println("Dosya Bilgileri");
                     if (registerDto.getRolles().equals(ERoles.ADMIN.getValue()) || registerDto.getRolles().equals(ERoles.WRITER.getValue())) {
                         fileInformation();
@@ -240,13 +246,6 @@ public class RegisterLoginServices {
                         System.out.println("Rolünüz: " + registerDto.getRolles() + " Yetkiniz yoktur");
                         //throw new HamitMizrak0Exception("Yetkiniz Yoktur");
                     }
-                    break;
-                case 13:
-                    VkiDto vkiDto = vki_hesaplama(registerDto);
-                    vki_database(vkiDto);
-                    vkiLimitCheck(vkiDto);
-                    backToHomePage();
-                    //Thread.sleep(3000);
                     break;
                 case 14:
                     logout();
@@ -267,15 +266,29 @@ public class RegisterLoginServices {
         VkiDto vkiDto = new VkiDto();
         vkiDto.setUserId(registerDto.getId());
         System.out.println("\n ---- Vucut Kitle Indexi Hesaplama Bolumune Hosgeldiniz Saglikli Gunler Dileriz ----");
+        System.out.println("\nVücut kitle indeksi (VKİ), bir kişinin boy ve kilo ölçümlerine dayanarak vücuttaki yağ oranını hesaplamak için" +
+                "\nkullanılan bir ölçüttür. \n\nVKİ değerleri aşağıdaki kategorilere ayrılır:");
+        System.out.println("1-) 18.5 ve altı: Ideal Kilo Alti (Zayif)" +
+                "\n" +
+                "2-) 18.5 ile 24.9 arasi: Ideal Kilo" +
+                "\n" +
+                "3-) 25 ile 29.9 arasi: Kilolu" +
+                "\n" +
+                "4-) 30 ile 34.9 arasi: 1. Derece Obezite" +
+                "\n" +
+                "5-) 35 ile 39.9 arasi: 2. Derece Obezite" +
+                "\n" +
+                "6-) 40 ve üzeri: 3. Derece Obezite");
+        System.out.println("\nAsagida bulunan boy ve kilo bilgilerinizi girerek vucut " +
+                "kitle idexi bilginizi ogrenebilirsiniz.");
         // Kilo girişi
-        System.out.println("Lütfen kilonuzu kilgoram cinsinden giriniz (Ör:85,6)");
+        System.out.println("\nLütfen kilonuzu kilgoram cinsinden giriniz (Ör:85,6)");
         vkiDto.setKilo(klavye.nextDouble());
         // Boy girişi
         System.out.println("Lütfen boyunuzu metre cinsinden giriniz (Ör:1,75)");
         vkiDto.setBoy(klavye.nextDouble());
         // Sonuc Hesapla
         Double sonuc = (vkiDto.getKilo() / (vkiDto.getBoy() * vkiDto.getBoy()));
-
         vkiDto.setVucutKitleIndex(sonuc);
         return vkiDto;
     }// end vki hesaplama
@@ -290,8 +303,7 @@ public class RegisterLoginServices {
             vkiController.update(vkiDto_db.getId(),vkiDto);
         }
     }
-
-    // ALT LIMIT UST LIMIT OLCME
+    // VKI ALT LIMIT UST LIMIT 'e GORE SONUCU GOSTERSIN
     private void vkiLimitCheck (VkiDto vkiDto){
         final DecimalFormat df = new DecimalFormat("0.00");
         System.out.println("--------------------------------------------------------------------");
@@ -317,7 +329,6 @@ public class RegisterLoginServices {
         }
         System.out.println("--------------------------------------------------------------------");
     }
-
     // ANASAYFAYA DON
     private void backToHomePage(){
         System.out.println("Anasayfaya Donmek Icin ENTER Tusuna Basin");

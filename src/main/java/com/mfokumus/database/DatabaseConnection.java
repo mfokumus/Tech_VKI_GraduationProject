@@ -21,9 +21,9 @@ public class DatabaseConnection extends DatabaseInformation{
     private DatabaseConnection(){
         try {
             Class.forName(this.forNameData);
-            System.out.println("Driver basariyla yuklendi.");
+            //System.out.println("Driver basariyla yuklendi.");
             connection = DriverManager.getConnection(url,user,password);
-            System.out.println("Database baglantisi basarili.");
+            //System.out.println("Database baglantisi basarili.");
         } catch (Exception exception){
             exception.printStackTrace();
         }

@@ -37,9 +37,8 @@ public class FilePathData { // File yapısına veriler eklemek istiyorsak FilePa
 //                logFileWriter(); //Writer
 //                logFileReader(); //Reader
 //                fileIsDelete();//Delete
-
             }else{
-                String fileName = pathFileName+ "Boyle bir dosya var. Tekrar olusturulmadi.";
+                String fileName = pathFileName+ " => Boyle bir dosya var. Tekrar olusturulmadi.";
                 System.out.println(fileName);
             }
         }catch (Exception e){

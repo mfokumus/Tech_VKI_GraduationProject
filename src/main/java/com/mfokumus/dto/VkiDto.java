@@ -55,7 +55,7 @@ public class VkiDto extends BaseDto implements Serializable {
     }
 
     public void setKilo(Double kilo) {
-        this.kilo = (double) Math.round(kilo);
+        this.kilo = kilo;
     }
 
     public Double getVucutKitleIndex() {

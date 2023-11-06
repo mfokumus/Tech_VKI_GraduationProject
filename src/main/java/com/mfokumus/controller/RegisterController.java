@@ -10,7 +10,6 @@ import java.util.ArrayList;
 public class RegisterController implements IDaoGenerics<RegisterDto> {
 
     // Injection
-    private FilePathData filePathData = new FilePathData();
     private RegisterDao registerDao = new RegisterDao();
 
     ////////////////////////////////////////////////////////
