@@ -54,7 +54,7 @@ public class VkiDao implements IDaoGenerics<VkiDto> , Serializable {
             e.printStackTrace();
         }
         return null;
-    }
+    }// end create
 
     // FIND BY ID
     @Override
@@ -94,7 +94,7 @@ public class VkiDao implements IDaoGenerics<VkiDto> , Serializable {
             e.printStackTrace();
         }
         return null;
-    }
+    }// end list
 
     // UPDATE
     @Override
@@ -128,7 +128,7 @@ public class VkiDao implements IDaoGenerics<VkiDto> , Serializable {
             e.printStackTrace();
         }
         return null;
-    }
+    }// end update
 
     @Override
     public RegisterDto updateRemaing(Long id, VkiDto vkiDto) {
@@ -166,6 +166,6 @@ public class VkiDao implements IDaoGenerics<VkiDto> , Serializable {
             e.printStackTrace();
         }
         return null;
-    }
-}
+    }// end findByUserId class
+}// end class
 

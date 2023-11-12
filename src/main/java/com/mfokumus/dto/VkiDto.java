@@ -27,6 +27,7 @@ public class VkiDto extends BaseDto implements Serializable {
         this.userId = userId;
     }
 
+    // TO STRING
     @Override
     public String toString() {
         return "VkiDto{" +
@@ -42,6 +43,7 @@ public class VkiDto extends BaseDto implements Serializable {
         return null;
     }
 
+    // GETTER AND SETTER
     public Double getBoy() {
         return boy;
     }

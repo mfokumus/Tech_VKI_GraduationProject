@@ -262,7 +262,6 @@ public class RegisterLoginServices {
     // VKİ HESAPLAMA
     public VkiDto vki_hesaplama(RegisterDto registerDto){
         Scanner klavye = new Scanner(System.in);
-        final DecimalFormat df = new DecimalFormat("0.00");
         VkiDto vkiDto = new VkiDto();
         vkiDto.setUserId(registerDto.getId());
         System.out.println("\n ---- Vucut Kitle Indexi Hesaplama Bolumune Hosgeldiniz Saglikli Gunler Dileriz ----");
@@ -292,7 +291,7 @@ public class RegisterLoginServices {
         vkiDto.setVucutKitleIndex(sonuc);
         return vkiDto;
     }// end vki hesaplama
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // VERILERI DATABASE'DE OLUSTURSUN
     // GET VKI ILE DATABASE KONTROLU YAPSIN YOKSA OLUSTURSUN VARSA UPDATE ETSIN
     private void vki_database(VkiDto vkiDto) {
@@ -303,6 +302,7 @@ public class RegisterLoginServices {
             vkiController.update(vkiDto_db.getId(),vkiDto);
         }
     }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // VKI ALT LIMIT UST LIMIT 'e GORE SONUCU GOSTERSIN
     private void vkiLimitCheck (VkiDto vkiDto){
         final DecimalFormat df = new DecimalFormat("0.00");
@@ -329,6 +329,7 @@ public class RegisterLoginServices {
         }
         System.out.println("--------------------------------------------------------------------");
     }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // ANASAYFAYA DON
     private void backToHomePage(){
         System.out.println("Anasayfaya Donmek Icin ENTER Tusuna Basin");
@@ -343,7 +344,7 @@ public class RegisterLoginServices {
             }
         }
     }
-
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // just member login
     private void specialHomePage() {
         System.out.println("Sadece Üyeler Bu sayfayı görebilir.");
