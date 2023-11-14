@@ -62,6 +62,7 @@ public class VkiDao implements IDaoGenerics<VkiDto> , Serializable {
         return null;
     }
 
+    // FIND BY EMAIL
     @Override
     public VkiDto findByEmail(String email) {
         return null;
@@ -70,31 +71,8 @@ public class VkiDao implements IDaoGenerics<VkiDto> , Serializable {
     // LIST
     @Override
     public ArrayList<VkiDto> list() {
-        ArrayList<VkiDto> list = new ArrayList<>();
-        VkiDto vkiDto;
-        try(Connection connection = getInterfaceConnection()){
-            // Manipulation : executeUpdate() [create, delete, update]
-            // Sorgularda   : executeQuery()  [list, find, update]
-            String sql ="SELECT * FROM cars.vki";
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()){
-                // id, boy, kilo
-                vkiDto = new VkiDto();
-                vkiDto.setId(resultSet.getLong("id"));
-                vkiDto.setBoy(resultSet.getDouble("boy"));
-                vkiDto.setKilo(resultSet.getDouble("kilo"));
-                vkiDto.setSystemCreatedDate(resultSet.getDate("system_created_date"));
-                list.add(vkiDto);
-            }
-            return list; // eğer başarılı ise return registerDto
-        }catch (SQLException sql){
-            sql.printStackTrace();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
         return null;
-    }// end list
+    }
 
     // UPDATE
     @Override
@@ -131,7 +109,7 @@ public class VkiDao implements IDaoGenerics<VkiDto> , Serializable {
     }// end update
 
     @Override
-    public RegisterDto updateRemaing(Long id, VkiDto vkiDto) {
+    public VkiDto updateRemaing(Long id, VkiDto vkiDto) {
         return null;
     }
 

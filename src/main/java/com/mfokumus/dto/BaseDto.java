@@ -34,14 +34,13 @@ abstract public class BaseDto implements Serializable {
                 '}';
     }
 
-    //Metotlar
+    //Metodlar
     public String nowDate(){
         return String.valueOf(this.systemCreatedDate);
     }
 
-    //Gövdesiz metot
+    //Gövdesiz metod
     abstract public String nowDateAbstract();
-
 
     //Getter and Setter
     public Long getId() {

@@ -32,7 +32,7 @@ public interface IDaoGenerics <T> {
     public T update(Long id, T t); // update için kullanıcıdan bir id ve objenin kendisini alalım.
 
     // UPDATE (REMAING NUMBER)
-    public RegisterDto updateRemaing(Long id, T t);
+    public T updateRemaing(Long id, T t);
 
     // DELETE
     public T deleteById(T t); //

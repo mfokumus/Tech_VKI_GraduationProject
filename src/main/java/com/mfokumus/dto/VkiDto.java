@@ -8,6 +8,7 @@ public class VkiDto extends BaseDto implements Serializable {
     // SERILESTIRME
     public static final Long serialVersionUID = 1L;
 
+    // Variables
     private Double boy;
     private Double kilo;
     private Double vucutKitleIndex;
@@ -38,6 +39,7 @@ public class VkiDto extends BaseDto implements Serializable {
                 "} " + super.toString();
     }
 
+    // Date
     @Override
     public String nowDateAbstract() {
         return null;
@@ -71,8 +73,8 @@ public class VkiDto extends BaseDto implements Serializable {
     public Long getUserId() {
         return userId;
     }
-
     public void setUserId(Long userId) {
         this.userId = userId;
     }
-}
+
+}// end class VkiDto

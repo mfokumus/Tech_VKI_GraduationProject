@@ -40,7 +40,7 @@ public class VkiController implements IDaoGenerics<VkiDto> {
     // FIND BY ID
     @Override
     public VkiDto findById(Long id) {
-        return vkiDao.findById(id);
+        return null;
     }
 
     @Override
@@ -51,7 +51,7 @@ public class VkiController implements IDaoGenerics<VkiDto> {
     // LIST
     @Override
     public ArrayList<VkiDto> list() {
-        return vkiDao.list();
+        return null;
     }
 
     // UPDATE
@@ -61,7 +61,7 @@ public class VkiController implements IDaoGenerics<VkiDto> {
     }
 
     @Override
-    public RegisterDto updateRemaing(Long id, VkiDto vkiDto) {
+    public VkiDto updateRemaing(Long id, VkiDto vkiDto) {
         return null;
     }
 

@@ -63,7 +63,7 @@ public class RegisterLoginServices {
         RegisterDto registerDto = new RegisterDto();
         String uEmailAddress, uPassword;
         Long remaingNumber = 0L;
-        System.out.println("\n###LOGIN SAYSASINA HOSGELDINIZ");
+        System.out.println("\n----LOGIN SAYSASINA HOSGELDINIZ----");
         System.out.println("Emailinizi giriniz");
         uEmailAddress = klavye.nextLine();
         System.out.println("Sifrenizi giriniz");
@@ -123,7 +123,7 @@ public class RegisterLoginServices {
     private void adminProcess(RegisterDto registerDto) {
         Scanner klavye = new Scanner(System.in);
         while (true) {
-            System.out.println("\nMFO SISTEMINE HOSGELDINIZ");
+            System.out.println("\n----MFO SISTEMINE HOSGELDINIZ----");
             System.out.println("Lütfen Seçiminizi Yapınız");
             System.out.println("0-) Ana sayfa\n1-) VKI (Vücut Kitle İndexi) Hesaplama\n2-) Üye Listele\n3-) Üye Ekle\n4-) Üye Bul(ID)\n5-) Üye Bul (Email)");
             System.out.println("6-) Üye Güncelle\n7-) Üye Sil\n8-) Giriş Logları\n9-) Rolünüz");
