@@ -6,7 +6,7 @@
 
 
 ## TechCareer FullStack Bootcamp Bitirme Projeme Hoşgeldiniz
-**Java with sql**
+**Hazırlayan: Mete Furkan OKUMUS (Java with SQL)**
 >
 > 
 > 
