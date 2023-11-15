@@ -363,7 +363,6 @@ public class RegisterLoginServices {
     private void specialHomePage() {
         System.out.println("Sadece Üyeler Bu sayfayı görebilir.");
     }
-
     // CRUD
     // USER LIST
     private void memberList() {
@@ -446,14 +445,12 @@ public class RegisterLoginServices {
         Long user_id;
         while(true){
             user_id = klavye.nextLong();
-            if (id == user_id){
+            if (user_id!=null && user_id==id){  //Eger girilen input null degilse ve sistemdeki id ile aynıysa delete et
                 return vkiController.deleteByUserID(id);
-            }else{
-                System.out.println("Yanlış veya eksik bir tuşlama yaptınız.");
-                break;
+            }else {
+                System.out.println("Yanlış veya eksik bir tuşlama yaptınız. Tekrar Giriniz!");
             }
         }
-        return null;
     }
     //////////////////////////////////////////////////////////////////////////////////////////////
     // LOGLAMA
