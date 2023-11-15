@@ -149,9 +149,11 @@ public class RegisterLoginServices {
                         vkiList();
                         Long vkiDtoDelete = vkiDelete(registerDto.getId());
                         System.out.println(vkiDtoDelete);
+                        backToHomePage();
                     } else {
-                        System.out.println("Rolünüz: " + registerDto.getRolles() + " Bilgi silmek icin yetkiniz yoktur"+
+                        System.out.println("Rolünüz: " +registerDto.getRolles()+ " Bilgi silmek icin yetkiniz yoktur."+
                                 "\nSilmek istiyorsanız admin ile iletisime geciniz.");
+                        backToHomePage();
                     }
                     break;
                 ////////////////////////////////////////////////////////////////////////////////////
