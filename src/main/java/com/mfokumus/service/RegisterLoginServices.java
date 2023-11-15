@@ -125,27 +125,41 @@ public class RegisterLoginServices {
         while (true) {
             System.out.println("\n----MFO SISTEMINE HOSGELDINIZ----");
             System.out.println("Lütfen Seçiminizi Yapınız");
-            System.out.println("0-) Ana sayfa\n1-) VKI (Vücut Kitle İndexi) Hesaplama\n2-) Üye Listele\n3-) Üye Ekle\n4-) Üye Bul(ID)\n5-) Üye Bul (Email)");
-            System.out.println("6-) Üye Güncelle\n7-) Üye Sil\n8-) Giriş Logları\n9-) Rolünüz");
-            System.out.println("10-) Dosya Ekle\n11-) Dosya Listele\n12-) Dosya Sil");
-            System.out.println("13-) Dosya Bilgileri  \n14-) Çıkış Yap");
+            System.out.println("0-) Ana sayfa\n1-) VKI (Vücut Kitle İndexi) Hesaplama\n2-) VKI Bilgi Silme Islemi");
+            System.out.println("3-) Üye Listele\n4-) Üye Ekle\n5-) Üye Bul(ID)\n6-) Üye Bul (Email)");
+            System.out.println("7-) Üye Güncelle\n8-) Üye Sil\n9-) Giriş Logları\n10-) Rolünüz");
+            System.out.println("11-) Dosya Ekle\n12-) Dosya Listele\n13-) Dosya Sil");
+            System.out.println("14-) Dosya Bilgileri  \n15-) Cikis Yap");
             int chooise = klavye.nextInt();
             switch (chooise) {
                 case 0:
                     System.out.println("Home Page");
                     specialHomePage();
                     break;
+                ////////////////////////////////////////////////////////////////////////////////////
                 case 1:
                     VkiDto vkiDto = vki_hesaplama(registerDto);
                     vki_database(vkiDto);
                     vkiLimitCheck(vkiDto);
                     backToHomePage();
                     break;
+                ////////////////////////////////////////////////////////////////////////////////////
                 case 2:
+                    if (registerDto.getRolles().equals(ERoles.ADMIN.getValue())) {
+                        vkiList();
+                        Long vkiDtoDelete = vkiDelete(registerDto.getId());
+                        System.out.println(vkiDtoDelete);
+                    } else {
+                        System.out.println("Rolünüz: " + registerDto.getRolles() + " Bilgi silmek icin yetkiniz yoktur"+
+                                "\nSilmek istiyorsanız admin ile iletisime geciniz.");
+                    }
+                    break;
+                ////////////////////////////////////////////////////////////////////////////////////
+                case 3:
                     System.out.println("Listeleme");
                     memberList();
                     break;
-                case 3:
+                case 4:
                     if (registerDto.getRolles().equals(ERoles.ADMIN.getValue())) {
                         System.out.println("Oluşturma");
                         RegisterDto registerDtoCreate = memberCreate();
@@ -155,7 +169,7 @@ public class RegisterLoginServices {
                         //throw new HamitMizrak0Exception("Yetkiniz Yoktur");
                     }
                     break;
-                case 4:
+                case 5:
                     if (registerDto.getRolles().equals(ERoles.ADMIN.getValue())) {
                         memberList();
                         System.out.println("ID'e göre Bulma");
@@ -172,7 +186,7 @@ public class RegisterLoginServices {
                         //throw new HamitMizrak0Exception("Yetkiniz Yoktur");
                     }
                     break;
-                case 5:
+                case 6:
                     if (registerDto.getRolles().equals(ERoles.ADMIN.getValue())) {
                         memberList();
                         System.out.println("Email'e göre bulma");
@@ -183,7 +197,7 @@ public class RegisterLoginServices {
                         //throw new HamitMizrak0Exception("Yetkiniz Yoktur");
                     }
                     break;
-                case 6:
+                case 7:
                     if (registerDto.getRolles().equals(ERoles.ADMIN.getValue())) {
                         memberList();
                         System.out.println("Güncelleme");
@@ -194,7 +208,7 @@ public class RegisterLoginServices {
                         //throw new HamitMizrak0Exception("Yetkiniz Yoktur");
                     }
                     break;
-                case 7:
+                case 8:
                     if (registerDto.getRolles().equals(ERoles.ADMIN.getValue())) {
                         memberList();
                         System.out.println("Silme");
@@ -205,13 +219,13 @@ public class RegisterLoginServices {
                         //throw new HamitMizrak0Exception("Yetkiniz Yoktur");
                     }
                     break;
-                case 8:
+                case 9:
                     logFile();
                     break;
-                case 9:
+                case 10:
                     System.out.println("Rolünüz: " + userRoles(registerDto.getRolles()));
                     break;
-                case 10:
+                case 11:
                     System.out.println("Dosya Ekleme");
                     if (registerDto.getRolles().equals(ERoles.ADMIN.getValue())) {
                         specialFileCreateData();
@@ -220,7 +234,7 @@ public class RegisterLoginServices {
                         //throw new HamitMizrak0Exception("Yetkiniz Yoktur");
                     }
                     break;
-                case 11:
+                case 12:
                     System.out.println("Dosya Listeleme");
                     if (registerDto.getRolles().equals(ERoles.ADMIN.getValue())) {
                         fileListData();
@@ -229,7 +243,7 @@ public class RegisterLoginServices {
                         //throw new HamitMizrak0Exception("Yetkiniz Yoktur");
                     }
                     break;
-                case 12:
+                case 13:
                     System.out.println("Dosya Silme");
                     if (registerDto.getRolles().equals(ERoles.ADMIN.getValue()) ) {
                         fileDeleteData();
@@ -238,7 +252,7 @@ public class RegisterLoginServices {
                         //throw new HamitMizrak0Exception("Yetkiniz Yoktur");
                     }
                     break;
-                case 13:
+                case 14:
                     System.out.println("Dosya Bilgileri");
                     if (registerDto.getRolles().equals(ERoles.ADMIN.getValue())) {
                         fileInformation();
@@ -247,7 +261,7 @@ public class RegisterLoginServices {
                         //throw new HamitMizrak0Exception("Yetkiniz Yoktur");
                     }
                     break;
-                case 14:
+                case 15:
                     logout();
                     break;
                 default:
@@ -355,7 +369,12 @@ public class RegisterLoginServices {
     private void memberList() {
         registerController.list().forEach(System.out::println);
     }
-
+    //////////////////////////////////////////////////////////////////////////
+    // VKI LIST
+    private void vkiList() {
+        vkiController.list().forEach(System.out::println);
+    }
+    //////////////////////////////////////////////////////////////////////////
     // USER CREATE
     private RegisterDto memberCreate() {
         return register();
@@ -419,7 +438,24 @@ public class RegisterLoginServices {
         registerDto.setId(id);
         return registerController.deleteById(registerDto);
     }
-
+    ///////////////////////////////////////////////////////////////////////////////////////////User VKI Bilgi Delete
+    private Long vkiDelete(Long id) {
+        Scanner klavye = new Scanner(System.in);
+        System.out.println("User ID'niz: "+ id);
+        System.out.println("\nLutfen kendi id numaranizi girerek VKI bilginizi siliniz: ");
+        Long user_id;
+        while(true){
+            user_id = klavye.nextLong();
+            if (id == user_id){
+                return vkiController.deleteByUserID(id);
+            }else{
+                System.out.println("Yanlış veya eksik bir tuşlama yaptınız.");
+                break;
+            }
+        }
+        return null;
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////////
     // LOGLAMA
     private void logFile() {
         filePathData.logFileReader();

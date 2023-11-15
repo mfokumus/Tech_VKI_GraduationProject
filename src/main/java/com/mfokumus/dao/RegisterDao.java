@@ -321,7 +321,6 @@ public class RegisterDao implements IDaoGenerics<RegisterDto> , Serializable {
         }
         return null;
     }
-
     // DELETE
     @Override
     public RegisterDto deleteById(RegisterDto registerDto) {
