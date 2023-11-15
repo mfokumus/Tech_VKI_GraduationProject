@@ -437,7 +437,8 @@ public class RegisterLoginServices {
         registerDto.setId(id);
         return registerController.deleteById(registerDto);
     }
-    ///////////////////////////////////////////////////////////////////////////////////////////User VKI Bilgi Delete
+    /////////////////////////////////////////////////////////////////////////////////////////
+    // User VKI Bilgi Delete
     private Long vkiDelete(Long id) {
         Scanner klavye = new Scanner(System.in);
         System.out.println("User ID'niz: "+ id);
@@ -451,7 +452,7 @@ public class RegisterLoginServices {
                 System.out.println("Yanlış veya eksik bir tuşlama yaptınız. Tekrar Giriniz!");
             }
         }
-    }
+    }// end vkiDelete
     //////////////////////////////////////////////////////////////////////////////////////////////
     // LOGLAMA
     private void logFile() {
