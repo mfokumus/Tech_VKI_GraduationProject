@@ -29,7 +29,7 @@ TRUNCATE `cars`.`vki`;
 
 -- INSERT
 -- insert into database.table () values ()
-INSERT INTO `cars`.`vki` (`boy`, `kilo`, `vucut_kitle_index`,`user_id`) VALUES ('1.78', '85', '22.6',`null`);
+INSERT INTO `cars`.`vki` (`boy`, `kilo`, `vucut_kitle_index`,`user_id`) VALUES ('1.78', '85', '22.6',"null");
 
 -- FIND
 SELECT * FROM cars.vki where id=1;
@@ -43,4 +43,4 @@ DELETE FROM `cars`.`vki` WHERE (`id` = '1');
 
 -- SELECT
 SELECT * FROM cars.vki;
-select count(*) from `cars`.`register`;
+select count(*) from `cars`.`vki`;
