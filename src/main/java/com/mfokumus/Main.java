@@ -6,7 +6,7 @@ import com.mfokumus.service.RegisterLoginServices;
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
-        RegisterLoginServices registerLoginServices = new RegisterLoginServices();
-        registerLoginServices.login();
+        RegisterLoginServices vkiProject = new RegisterLoginServices();
+        vkiProject.login();
     }
 }

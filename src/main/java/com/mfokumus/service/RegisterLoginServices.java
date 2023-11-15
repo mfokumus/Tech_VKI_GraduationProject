@@ -145,6 +145,7 @@ public class RegisterLoginServices {
                     break;
                 ////////////////////////////////////////////////////////////////////////////////////
                 case 2:
+                    System.out.println("---VKI Bilgi Silme Islemine Hosgeldiniz---");
                     if (registerDto.getRolles().equals(ERoles.ADMIN.getValue())) {
                         vkiList();
                         Long vkiDtoDelete = vkiDelete(registerDto.getId());
@@ -307,7 +308,7 @@ public class RegisterLoginServices {
         vkiDto.setVucutKitleIndex(sonuc);
         return vkiDto;
     }// end vki hesaplama
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // VERILERI DATABASE'DE OLUSTURSUN
     // GET VKI ILE DATABASE KONTROLU YAPSIN YOKSA OLUSTURSUN VARSA UPDATE ETSIN
     private void vki_database(VkiDto vkiDto) {
@@ -443,8 +444,8 @@ public class RegisterLoginServices {
     // User VKI Bilgi Delete
     private Long vkiDelete(Long id) {
         Scanner klavye = new Scanner(System.in);
-        System.out.println("User ID'niz: "+ id);
-        System.out.println("\nLutfen kendi id numaranizi girerek VKI bilginizi siliniz: ");
+        System.out.println("\nUser ID'niz: "+ id);
+        System.out.println("Lutfen VKI bilgisini silmek istediginiz kullanıcının user id sini giriniz : ");
         Long user_id;
         while(true){
             user_id = klavye.nextLong();
