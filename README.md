@@ -110,27 +110,3 @@ The main purpose of the project: To write an application that calculates *Body M
 14-)File Information(-)
 15-)Log out(+)
 ```
-
----
-
-- asd
-- asd
-- asd
-
-
-```sh
-Java Base Version: 21
-libraries:
-```
-
-## for java  libraries
-```sh
-Lombok
-Mysql
-H2DB
-```
-
-## SQL 
-```sh
-select * from register;
-```
